@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text, Center, Button } from "@chakra-ui/react"
+import { Text, Center, Button } from "@chakra-ui/react"
 
 export default function ArtistThumbnail( {artistName, description, imageURL} ) {
 
@@ -16,8 +16,8 @@ export default function ArtistThumbnail( {artistName, description, imageURL} ) {
             bgRepeat="no-repeat"
             position="relative"
             >
-            <Center><Text bottom="8" position="absolute" as="b" fontSize="40" textColor="white">{artistName}</Text></Center>
-            <Center><Text bottom="2" position="absolute" as="i" fontSize="20" textColor="white">{description}</Text></Center>
+            <Center><Text bottom="8" position="absolute" as="b" fontSize="40" textColor="white" fontWeight="semibold">{artistName}</Text></Center>
+            <Center><Text bottom="2" position="absolute" as="i" fontSize="20" textColor="white" fontWeight="thin">{description}</Text></Center>
         </Button>
     )
 }

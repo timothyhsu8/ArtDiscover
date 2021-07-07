@@ -6,7 +6,7 @@ export default function AboutPage() {
 
     return (
         <Box>
-            <Header headerColor="teal.400" currentPage="about"/>
+            <Header headerColor="teal.400" currentPage="about" weight="thin"/>
             ABOUT PAGE
         </Box>
     )

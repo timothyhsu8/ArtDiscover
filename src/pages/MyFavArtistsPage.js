@@ -45,7 +45,7 @@ export default function MyFavArtistsPage() {
 
     return (
         <Box>
-            <Header headerColor="teal.400" currentPage="personalfavartists"/>
+            <Header headerColor="teal.400" currentPage="personalfavartists" weight="thin"/>
             
             <Center>
                 <Box w="90%" h="650px" pos="relative" bgColor="black">

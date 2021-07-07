@@ -9,7 +9,7 @@ export default function ArtistsPage() {
     return (
         <Box>
             {/* <Button onClick={toggleColorMode}> <MoonIcon /> </Button> */}
-            <Header posi headerColor="teal.400" currentPage="artists"/>
+            <Header headerColor="teal.400" currentPage="artists" weight="thin"/>
             <Grid templateColumns="repeat(3, 1fr)">
                 <ArtistThumbnail 
                     artistName="Kan Liu" 

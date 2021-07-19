@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Grid, Text, Image } from "@chakra-ui/react"
 import { ViewIcon } from '@chakra-ui/icons'
+import '../styles.css'
 
 export default function YoutubeResource( { name, pfp, description, vid1thumbnail, vid2thumbnail, vid3thumbnail, vid1title, vid2title, vid3title } ) {
     return(
@@ -9,6 +10,7 @@ export default function YoutubeResource( { name, pfp, description, vid1thumbnail
             cursor:"pointer"
           }}
           _active={{opacity:0.5}}
+          className="disable-select"
           >
             <Grid h="100%" templateColumns="1fr 5fr">
                 <Box>

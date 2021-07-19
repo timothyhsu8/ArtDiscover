@@ -41,7 +41,7 @@ export default function Header( {headerColor, currentPage, weight} ) {
                     <Button _hover={{
                         color:"gray.700",
                         bgColor:"orange.200"}}
-                        minW="100%" minH="50" bgColor={(currentPage === "about") ? "blue.400" : headerColor} 
+                        minW="100%" minH="50" bgColor={(currentPage === "suggestions") ? "blue.400" : headerColor} 
                         borderRadius="3" fontSize="30" onClick={test} fontWeight={weight} rightIcon={<QuestionIcon />}> SUGGEST ARTISTS 
                     </Button> 
                 </Link>

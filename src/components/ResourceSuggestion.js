@@ -15,7 +15,7 @@ export default function ResourceSuggestion() {
                     <Text fontSize={16} fontWeight="medium"> Artist Name</Text> 
                     <Text fontSize={16} fontWeight="thin" >&nbsp;(If Applicable) </Text>
                 </Flex>
-                <Input borderColor="gray.400" border="1px"  placeholder="Job Title, Notable Works, Etc." variant="filled" mb={3}></Input>
+                <Input borderColor="gray.400" border="1px"  placeholder="Artist Name" variant="filled" mb={3}></Input>
                 <Button colorScheme="yellow">Submit</Button>
             </Flex>
         </Flex>        

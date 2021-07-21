@@ -27,19 +27,19 @@ export default function SuggestionsPage() {
                     <Grid templateColumns="1fr 1fr 1fr" h="100px" >
                         <Center> 
                             <Button onClick={() => setFormType("artist")} w="250px" h="50px" bgColor={formType === "artist" ? "yellow.300" : "gray.200"} 
-                                _hover={{cursor:"pointer", bgColor:"orange"}}>
+                                _hover={{cursor:"pointer", bgColor:"orange.300"}}>
                                 Suggest Artist
                             </Button> 
                         </Center>
                         <Center> 
                             <Button onClick={() => setFormType("resource")} w="250px" h="50px" bgColor={formType === "resource" ? "yellow.300" : "gray.200"}
-                                _hover={{cursor:"pointer", bgColor:"orange"}}>
+                                _hover={{cursor:"pointer", bgColor:"orange.300"}}>
                                 Suggest Art Resource
                             </Button> 
                         </Center>
                         <Center> 
                             <Button onClick={() => setFormType("feedback")} w="250px" h="50px" bgColor={formType === "feedback" ? "yellow.300" : "gray.200"}
-                            _hover={{cursor:"pointer", bgColor:"orange"}}>
+                            _hover={{cursor:"pointer", bgColor:"orange.300"}}>
                                 Suggest Feedback
                                 </Button> 
                         </Center>

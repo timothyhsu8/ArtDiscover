@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useColorMode, Box, Grid, Center, Select, Button, Text, HStack} from "@chakra-ui/react"
+import { useColorMode, Box, Grid, Center, Select, Button, Text, Flex, Image, HStack, VStack} from "@chakra-ui/react"
 import Header from '../components/Header'
 import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';
@@ -66,12 +66,27 @@ export default function FavoritesPage() {
         setFavType(newFavType);
     }
 
+    const renderFavArtists = () => {
+        /* No Artists Favorited */
+        if(localStorage.getItem("favArtists") === ""){
+            return <Center>
+                <VStack spacing="7" textAlign="center">
+                    <Text fontSize="26" fontWeight="hairline" mt={30}> You don't have any favorited artists yet </Text>
+                    {/* <Image src="images/HowToFavoriteArtists.png" alt="How To Favorite Artists"></Image> */}
+                </VStack>
+            </Center>
+        }
+        
+        /* Render Favorite Artists */
+        else return <ArtistGrid artists={artists.filter(artist => localStorage.getItem("favArtists").includes(artist.name))} />;
+    }
+
     return (
         <Box>
             <Header headerColor="teal.400" currentPage="favorites" weight="thin"/>
             
             {/* SORT BY OPTION */}
-            <Box bgColor="white" h="10" w="100%" m={3}>
+            <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
                 <Center>
                     <Text fontSize="18" fontWeight="hairline">Sort by: &nbsp;</Text>
                     <Select w={200} h={10} color="teal.800" onChange={(sort) => reloadImages(sort.target.value)}>
@@ -81,14 +96,14 @@ export default function FavoritesPage() {
                     </Select>
                     <HStack spacing="10"> 
                         <Box />
-                        <Button onClick={() => changeFavType("artists")}
+                        <Button w="120px" onClick={() => changeFavType("artists")}
                             bgColor={favType === "artists" ? "orange.200" : "gray.150"} 
                             _hover={{
                                 opacity:0.8
                             }}> 
                             Artists 
                         </Button>
-                        <Button onClick={() => changeFavType("resources")} 
+                        <Button w="120px" onClick={() => changeFavType("resources")} 
                             bgColor={favType === "resources" ? "orange.200" : "gray.150"}
                             _hover={{
                                 opacity:0.8
@@ -100,7 +115,7 @@ export default function FavoritesPage() {
             </Box>
 
             {/* ARTIST/RESOURCES GRID */}
-            <ArtistGrid artists={artists.filter(artist => localStorage.getItem("favArtists").includes(artist.name))} />
+            {renderFavArtists()}
         </Box>
     )
 }

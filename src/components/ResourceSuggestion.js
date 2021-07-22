@@ -8,6 +8,7 @@ export default function ResourceSuggestion() {
                 <Heading mb={6} textAlign="center" fontSize="40px"> Suggest An Art Resource </Heading>
                 <Flex direction="row">
                     <Text fontSize={16} fontWeight="medium"> Website Name</Text> 
+                    <Text fontSize={16} fontWeight="medium" color="red">*</Text> 
                     <Text fontSize={16} fontWeight="thin" >&nbsp;(Youtube, Instagram, Schoolism, etc.) </Text>
                 </Flex>
                 <Input borderColor="gray.400" border="1px" placeholder="Website Name" variant="filled" mb={3}></Input>                    

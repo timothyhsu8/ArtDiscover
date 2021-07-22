@@ -68,7 +68,7 @@ export default function ArtistsPage() {
             <Header headerColor="teal.400" currentPage="artists" weight="thin"/>
              
              {/* SORT BY OPTION */}
-            <Box bgColor="white" h="10" w="100%" m={3}>
+            <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
                 <Center>
                     <Text fontSize="18" fontWeight="hairline">Sort by: &nbsp;</Text>
                     <Select w={200} h={10} color="teal.800" onChange={(sort) => reloadImages(sort.target.value)}>

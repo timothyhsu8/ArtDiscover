@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useColorMode, Box, Grid, Center, Select, Text } from "@chakra-ui/react"
+import { useColorMode, Box, Grid, Center, Select, Button, Text, HStack} from "@chakra-ui/react"
 import Header from '../components/Header'
 import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';
+export default function FavoritesPage() {
 
-export default function ArtistsPage() {
-    const { toggleColorMode } = useColorMode();
+    const [favType, setFavType] = useState("artists");
     const [artists, setArtists] = useState(shuffle(artistData));
 
     function shuffle(array) {
@@ -35,7 +35,6 @@ export default function ArtistsPage() {
         )
     }
 
-
     const sortArtistsAlphabetical = () => {
         setArtists((artists) =>
             artists.sort((a, b) => a.name > b.name ? 1 : -1)
@@ -54,7 +53,7 @@ export default function ArtistsPage() {
     )
     }
     
-    const reloadImages = ( sortType ) =>{
+    const reloadImages = ( sortType ) => {  
         if(sortType === "sort_random")
             sortArtistsRandom();
         if(sortType === "sort_abc")
@@ -63,11 +62,15 @@ export default function ArtistsPage() {
             sortArtistsReverseAlphabetical();
     }
 
+    const changeFavType = ( newFavType ) => {
+        setFavType(newFavType);
+    }
+
     return (
         <Box>
-            <Header headerColor="teal.400" currentPage="artists" weight="thin"/>
-             
-             {/* SORT BY OPTION */}
+            <Header headerColor="teal.400" currentPage="favorites" weight="thin"/>
+            
+            {/* SORT BY OPTION */}
             <Box bgColor="white" h="10" w="100%" m={3}>
                 <Center>
                     <Text fontSize="18" fontWeight="hairline">Sort by: &nbsp;</Text>
@@ -76,12 +79,28 @@ export default function ArtistsPage() {
                         <option value="sort_abc">Alphabetical [A-Z]</option>
                         <option value="sort_zyx">Reverse Alphabetical [Z-A]</option>
                     </Select>
+                    <HStack spacing="10"> 
+                        <Box />
+                        <Button onClick={() => changeFavType("artists")}
+                            bgColor={favType === "artists" ? "orange.200" : "gray.150"} 
+                            _hover={{
+                                opacity:0.8
+                            }}> 
+                            Artists 
+                        </Button>
+                        <Button onClick={() => changeFavType("resources")} 
+                            bgColor={favType === "resources" ? "orange.200" : "gray.150"}
+                            _hover={{
+                                opacity:0.8
+                            }}> 
+                            Resources 
+                        </Button>
+                    </HStack>
                 </Center>
             </Box>
 
-            {/* ARTIST GRID */}
-            <ArtistGrid artists={artists} />
+            {/* ARTIST/RESOURCES GRID */}
+            <ArtistGrid artists={artists.filter(artist => localStorage.getItem("favArtists").includes(artist.name))} />
         </Box>
     )
 }
-

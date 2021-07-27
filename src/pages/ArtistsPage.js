@@ -10,6 +10,7 @@ export default function ArtistsPage() {
     const [artists, setArtists] = useState(artistData);
     const [showingArtwork, setIsShowingArtwork] = useState(false);
     const [currentArtistData, setCurrentArtistData] = useState();
+    const [imageNum, setImageNum] = useState(0);
 
     function shuffle(array) {
         var currentIndex = array.length,  randomIndex;
@@ -65,9 +66,18 @@ export default function ArtistsPage() {
             sortArtistsReverseAlphabetical();
     }
 
+    const nextImage = () => {
+        (imageNum === currentArtistData.imageURL.length-1) ? setImageNum(0) : setImageNum(imageNum+1);
+    }
+
+    const prevImage = () => {
+        (imageNum === 0) ? setImageNum(currentArtistData.imageURL.length-1) : setImageNum(imageNum-1);
+    }
+
     const showArtistDetails = ( artistData ) => {
         setIsShowingArtwork(true);
         setCurrentArtistData(artistData);
+        setImageNum(0);
     }
 
     const renderArtistData = () => {
@@ -81,16 +91,16 @@ export default function ArtistsPage() {
 
             {/* SLIDESHOW */}
              <Center>
-                <Box w="90%" h="70vh" pos="relative" bgColor="black" top="50%">
+                <Box w="95%" h="75vh" pos="relative" bgColor="black" top="50%">
                     <Image pos="absolute" 
-                        src={currentArtistData.imageURL} 
+                        src={currentArtistData.imageURL[imageNum]} 
                         w="100%"
                         h="100%"
                         fit="contain"></Image>
-                    <Box pos="absolute" minH="100%" w="50px" _hover={{bgGradient:"linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);", cursor:"pointer"}}>
+                    <Box onClick={() => prevImage()} pos="absolute" minH="100%" w="50px" _hover={{bgGradient:"linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);", cursor:"pointer"}}>
                         <ChevronLeftIcon color="gray.500" pos="absolute" boxSize="10" top="45%"/>     
                     </Box>
-                    <Box pos="relative" float="right" minH="100%" w="50px" 
+                    <Box onClick={() => nextImage()} pos="relative" float="right" minH="100%" w="50px" 
                         _hover={{bgGradient:"linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);", cursor:"pointer" }}> 
                         <ChevronRightIcon color="gray.500" pos="absolute" top="45%" boxSize="10" right="0" /> 
                     </Box>

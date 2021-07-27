@@ -5,8 +5,8 @@ import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';
 
 export default function ArtistsPage() {
-    const { toggleColorMode } = useColorMode();
     const [artists, setArtists] = useState(shuffle(artistData));
+    const [showingArtwork, setIsShowingArtwork] = useState(false);
 
     function shuffle(array) {
         var currentIndex = array.length,  randomIndex;
@@ -51,10 +51,10 @@ export default function ArtistsPage() {
             .map((artist)=>{
                 return artist;
         })
-    )
+        )
     }
     
-    const reloadImages = ( sortType ) =>{
+    const reloadImages = ( sortType ) => {
         if(sortType === "sort_random")
             sortArtistsRandom();
         if(sortType === "sort_abc")
@@ -63,24 +63,30 @@ export default function ArtistsPage() {
             sortArtistsReverseAlphabetical();
     }
 
+    const showArtistDetails = ( artistData ) => {
+        setIsShowingArtwork(true);
+    }
+
     return (
         <Box>
-            <Header headerColor="teal.400" currentPage="artists" weight="thin"/>
-             
-             {/* SORT BY OPTION */}
-            <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
-                <Center>
-                    <Text fontSize="18" fontWeight="hairline">Sort by: &nbsp;</Text>
-                    <Select w={200} h={10} color="teal.800" onChange={(sort) => reloadImages(sort.target.value)}>
-                        <option value="sort_random">Random</option>
-                        <option value="sort_abc">Alphabetical [A-Z]</option>
-                        <option value="sort_zyx">Reverse Alphabetical [Z-A]</option>
-                    </Select>
-                </Center>
-            </Box>
+            <Box opacity={showingArtwork ? "0.5" : "1.0"} >
+                <Header headerColor="teal.400" currentPage="artists" weight="thin"/>
+                
+                {/* SORT BY OPTION */}
+                <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
+                    <Center>
+                        <Text fontSize="18" fontWeight="hairline">Sort by: &nbsp;</Text>
+                        <Select w={200} h={10} color="teal.800" onChange={(sort) => reloadImages(sort.target.value)}>
+                            <option value="sort_random">Random</option>
+                            <option value="sort_abc">Alphabetical [A-Z]</option>
+                            <option value="sort_zyx">Reverse Alphabetical [Z-A]</option>
+                        </Select>
+                    </Center>
+                </Box>
 
-            {/* ARTIST GRID */}
-            <ArtistGrid artists={artists} />
+                {/* ARTIST GRID */}
+                <ArtistGrid artists={artists} showArtistDetails={showArtistDetails}/>
+            </Box>
         </Box>
     )
 }

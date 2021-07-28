@@ -5,6 +5,8 @@ import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '@chakra-ui/icons'
 import Methods from '../Methods';
+import '../styles.css'
+import ArtistsDetails from '../components/ArtistDetails';
 
 export default function ArtistsPage() {
     // const [artists, setArtists] = useState(shuffle(artistData));
@@ -22,54 +24,22 @@ export default function ArtistsPage() {
     }
 
     const showArtistDetails = ( artistData ) => {
-        setIsShowingArtwork(true);
         setCurrentArtistData(artistData);
         setImageNum(0);
+        setIsShowingArtwork(true);
     }
 
     const renderArtistData = () => {
         if(!showingArtwork) return;
 
-        return <Box position="absolute" w="100%" h="100vh" zIndex="1" bgColor="rgba(0, 0, 0, 0.9)">
-            {/* CLOSE ICON */}
-            <Box w="100%" h="5vh" textAlign="center"> 
-                <CloseIcon onClick={() => setIsShowingArtwork(false)} _hover={{cursor:"pointer"}} float="right" mt="5" mr="5" boxSize="4" color="gray.400" />
-            </Box>
-
-            {/* SLIDESHOW */}
-             <Center>
-                <Box w="95%" h="75vh" pos="relative" bgColor="black" top="50%">
-                    <Image pos="absolute" 
-                        src={currentArtistData.imageURL[imageNum]} 
-                        w="100%"
-                        h="100%"
-                        fit="contain"></Image>
-                    <Box onClick={() => prevImage()} pos="absolute" minH="100%" w="50px" _hover={{bgGradient:"linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);", cursor:"pointer"}}>
-                        <ChevronLeftIcon color="gray.500" pos="absolute" boxSize="10" top="45%"/>     
-                    </Box>
-                    <Box onClick={() => nextImage()} pos="relative" float="right" minH="100%" w="50px" 
-                        _hover={{bgGradient:"linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);", cursor:"pointer" }}> 
-                        <ChevronRightIcon color="gray.500" pos="absolute" top="45%" boxSize="10" right="0" /> 
-                    </Box>
-                </Box>
-            </Center>
-
-            {/* ARTIST INFORMATION */}
-            <Box w="100%" h="70px" textAlign="center">
-                <Text fontSize="50" textColor="white" fontWeight="normal">
-                    {currentArtistData.name}
-                </Text>
-            </Box>
-        </Box>
+        return <ArtistsDetails prevImage={prevImage} nextImage={nextImage} setIsShowingArtwork={setIsShowingArtwork} currentArtistData={currentArtistData} imageNum={imageNum}  />
     }
 
     return (
         <Box>
             {renderArtistData()}
-
             <Box>
                 <Header headerColor="teal.400" currentPage="artists" weight="thin"/>
-                
                 {/* SORT BY OPTION */}
                 <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
                     <Center>

@@ -1,25 +1,13 @@
-@keyframes mymove {
-    from {top: 0px;}
-    to {top: 200px;}
-  }
-  
-@keyframes favme-hover {
-	from {
-		font-size: ms(3);
-	}
-	80% {
-		font-size: ms(2);
-	}
+
+.favButton {
+    transition: transform .10s;
+    transition: color .10s;
 }
 
+/* .favButton:hover{
 
-@keyframes hover {
-    from {font-size: ms(1);}
-    to {font-size: ms(2);}
-    /* from {box-sizing: 3px;}
-    to {box-sizing:10px;} */
-}
+} */
 
-.favButton{
-    /* animation: mymove 5s infinite; */
+.favButton:active{
+    transform:scale(120%);
 }

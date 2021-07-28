@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '@chakra-ui/icons'
+import Methods from '../Methods';
 
 export default function ArtistsPage() {
     // const [artists, setArtists] = useState(shuffle(artistData));
@@ -11,60 +12,6 @@ export default function ArtistsPage() {
     const [showingArtwork, setIsShowingArtwork] = useState(false);
     const [currentArtistData, setCurrentArtistData] = useState();
     const [imageNum, setImageNum] = useState(0);
-
-    function shuffle(array) {
-        var currentIndex = array.length,  randomIndex;
-      
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-      
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex--;
-      
-          // And swap it with the current element.
-          [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
-        }
-      
-        return array;
-      }
-
-    const sortArtistsRandom = () => {
-        setArtists((artists) =>
-            artists.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
-            .map((artist)=>{
-                return artist;
-            })
-        )
-    }
-
-    const sortArtistsAlphabetical = () => {
-        setArtists((artists) =>
-            artists.sort((a, b) => a.name > b.name ? 1 : -1)
-            .map((artist)=>{
-                return artist;
-            })
-        )
-    }
-
-    const sortArtistsReverseAlphabetical = () => {
-        setArtists((artists) =>
-            artists.sort((a, b) => a.name < b.name ? 1 : -1)
-            .map((artist)=>{
-                return artist;
-        })
-        )
-    }
-    
-    const reloadImages = ( sortType ) => {
-        if(sortType === "sort_random")
-            sortArtistsRandom();
-        if(sortType === "sort_abc")
-            sortArtistsAlphabetical();
-        if(sortType === "sort_zyx")
-            sortArtistsReverseAlphabetical();
-    }
 
     const nextImage = () => {
         (imageNum === currentArtistData.imageURL.length-1) ? setImageNum(0) : setImageNum(imageNum+1);
@@ -114,7 +61,6 @@ export default function ArtistsPage() {
                 </Text>
             </Box>
         </Box>
-
     }
 
     return (
@@ -128,7 +74,7 @@ export default function ArtistsPage() {
                 <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
                     <Center>
                         <Text fontSize="18" fontWeight="hairline">Sort by: &nbsp;</Text>
-                        <Select w={200} h={10} color="teal.800" onChange={(sort) => reloadImages(sort.target.value)}>
+                        <Select w={200} h={10} color="teal.800" onChange={(sort) => Methods.reloadImages(sort.target.value, artists, setArtists )}>
                             <option value="sort_random">Random</option>
                             <option value="sort_abc">Alphabetical [A-Z]</option>
                             <option value="sort_zyx">Reverse Alphabetical [Z-A]</option>

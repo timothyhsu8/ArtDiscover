@@ -39,11 +39,14 @@ export default function ArtistsDetails({ prevImage, nextImage, setIsShowingArtwo
         <Center>
             <Box w="100%" mt="4" >
                 <HStack justifyContent="center" spacing="14">
-                    <IconLink siteName="Website" siteURL="https://youtube.com" logoSrc="images/icons/personalwebsite.png"/>
-                    <IconLink siteName="ArtStation" siteURL="https://youtube.com" logoSrc="images/icons/artstation.png"/>
-                    <IconLink siteName="DeviantArt" siteURL="https://youtube.com" logoSrc="images/icons/deviantart.png"/>
-                    <IconLink siteName="Twitter" siteURL="https://youtube.com" logoSrc="images/icons/twitter.png"/>
-                    <IconLink siteName="Youtube" siteURL="https://youtube.com" logoSrc="images/icons/youtube.png"/>
+                    <IconLink siteName="Website" siteURL={currentArtistData.websiteURL} logoSrc="images/icons/personalwebsite.png"/>
+                    <IconLink siteName="ArtStation" siteURL={currentArtistData.artstationURL} logoSrc="images/icons/artstation.png"/>
+                    <IconLink siteName="DeviantArt" siteURL={currentArtistData.deviantartURL} logoSrc="images/icons/deviantart.png"/>
+                    <IconLink siteName="Twitter" siteURL={currentArtistData.twitterURL} logoSrc="images/icons/twitter.png"/>
+                    <IconLink siteName="Instagram" siteURL={currentArtistData.instagramURL} logoSrc="images/icons/instagram.png"/>
+                    <IconLink siteName="Youtube" siteURL={currentArtistData.youtubeURL} logoSrc="images/icons/youtube.png"/>
+                    <IconLink siteName="Twitch" siteURL={currentArtistData.twitchURL} logoSrc="images/icons/twitch.png"/>
+                    <IconLink siteName="Patreon" siteURL={currentArtistData.patreonURL} logoSrc="images/icons/patreon.png"/>
                 </HStack>
             </Box>
         </Center>

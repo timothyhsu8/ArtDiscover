@@ -3,6 +3,8 @@ import { Box, Image, Text} from "@chakra-ui/react"
 import '../styles.css'
 
 export default function IconLink({ siteName, siteURL, logoSrc }) {
+    if(siteURL === undefined) return <></>;
+
     return <a href={siteURL} target="_blank">
         <Box className="iconContainer">
             <figure>

@@ -18,3 +18,44 @@
 .iconContainer:hover{
     cursor:pointer;
 }
+
+.dot {
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+/* FAVORITE BUTTONS */
+.favButton {
+    transition: transform .10s;
+    transition: color .10s;
+}
+
+.favButton:hover{
+    transform:scale(110%);
+}
+
+.favButton:active{
+    transform:scale(120%);
+}
+
+.gradientBlock {
+    background-color: red;
+}
+
+.gradientParent:hover {
+    cursor:pointer;
+}
+
+.gradientParent:hover .gradientBlock {
+    opacity: 0.8;
+}

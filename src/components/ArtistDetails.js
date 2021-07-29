@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Image, Center, Text, HStack } from "@chakra-ui/react"
-import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '@chakra-ui/icons'
+import { ChevronLeftIcon, ChevronRightIcon, CloseIcon, StarIcon } from '@chakra-ui/icons'
 import '../styles.css'
 import IconLink from './IconLink'
 
-export default function ArtistsDetails({ prevImage, nextImage, setIsShowingArtwork, currentArtistData, imageNum }) {
-    return <Box className="slideshow" position="absolute" w="100%" h="100vh" zIndex="1" bgColor="rgba(0, 0, 0, 0.9)">
+export default function ArtistsDetails({ prevImage, nextImage, setImageNum, setIsShowingArtwork, currentArtistData, imageNum }) {
+    const [activeDot, setActiveDot] = useState(0);
+
+    const prevDot = () => {
+        (activeDot === 0 ? setActiveDot(currentArtistData.imageURL.length-1) : setActiveDot(activeDot-1));
+        prevImage();
+    }
+
+    const nextDot = () => {
+        (activeDot === currentArtistData.imageURL.length-1 ? setActiveDot(0) : setActiveDot(activeDot+1));
+        nextImage();
+    }
+
+    const setDot = (num) => {
+        setActiveDot(num);
+        setImageNum(num);
+    }
+
+    const renderDots = () => {
+        let dots = [];
+        for(let i = 0 ; i < currentArtistData.imageURL.length ; i++)
+            dots.push(<span className={activeDot === i ? "dot active" : "dot"} onClick={() => setDot(i)}></span>);
+        return dots;
+    }
+
+    return <Box className="slideshow" position="fixed" w="100%" h="100vh" zIndex="1" bgColor="rgba(0, 0, 0, 0.9)">
         {/* CLOSE ICON */}
         <Box w="100%" h="5vh" textAlign="center"> 
             <CloseIcon onClick={() => setIsShowingArtwork(false)} _hover={{cursor:"pointer"}} float="right" mt="5" mr="5" boxSize="4" color="gray.400" />
@@ -19,13 +43,23 @@ export default function ArtistsDetails({ prevImage, nextImage, setIsShowingArtwo
                     w="100%"
                     h="100%"
                     fit="contain"></Image>
-                <Box onClick={() => prevImage()} pos="absolute" minH="100%" w="50px" _hover={{bgGradient:"linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);", cursor:"pointer"}}>
-                    <ChevronLeftIcon color="gray.500" pos="absolute" boxSize="10" top="45%"/>     
+                <Box onClick={() => prevDot()} pos="absolute" minH="100%" w="50px" transition="0.3s ease" bgGradient="linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);" 
+                     opacity="0" _hover={{cursor:"pointer", opacity:"0.8"}}></Box>
+                <ChevronLeftIcon onClick={() => prevDot()} _hover={{cursor:"pointer", opacity:"0.8"}} color="gray.500" pos="absolute" boxSize="10" top="45%"/>
+                
+                <Box onClick={() => nextDot()} pos="relative" float="right" minH="100%" w="50px" transition="0.3s ease" 
+                    opacity="0" bgGradient="linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);"
+                    _hover={{cursor:"pointer", opacity:"0.8"}}> 
                 </Box>
-                <Box onClick={() => nextImage()} pos="relative" float="right" minH="100%" w="50px" 
-                    _hover={{bgGradient:"linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);", cursor:"pointer" }}> 
-                    <ChevronRightIcon color="gray.500" pos="absolute" top="45%" boxSize="10" right="0" /> 
-                </Box>
+                <ChevronRightIcon onClick={() => nextDot()} _hover={{cursor:"pointer", opacity:"0.8"}} color="gray.500" pos="absolute" top="45%" boxSize="10" right="0" /> 
+            </Box>
+        </Center>
+
+        <Center>
+            <Box w="100%" mt="4" >
+                <HStack justifyContent="center" spacing="3">
+                    {renderDots()}
+                </HStack>
             </Box>
         </Center>
 

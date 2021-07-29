@@ -31,7 +31,8 @@ export default function ArtistsPage() {
     const renderArtistData = () => {
         if(!showingArtwork) return;
 
-        return <ArtistsDetails prevImage={prevImage} nextImage={nextImage} setIsShowingArtwork={setIsShowingArtwork} currentArtistData={currentArtistData} imageNum={imageNum}  />
+        return <ArtistsDetails prevImage={prevImage} nextImage={nextImage} setImageNum={setImageNum} setIsShowingArtwork={setIsShowingArtwork} 
+            currentArtistData={currentArtistData} imageNum={imageNum}  />
     }
 
     return (

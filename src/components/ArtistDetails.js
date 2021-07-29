@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Image, Center, Text, HStack } from "@chakra-ui/react"
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '@chakra-ui/icons'
 import '../styles.css'
+import IconLink from './IconLink'
 
 export default function ArtistsDetails({ prevImage, nextImage, setIsShowingArtwork, currentArtistData, imageNum }) {
     return <Box className="slideshow" position="absolute" w="100%" h="100vh" zIndex="1" bgColor="rgba(0, 0, 0, 0.9)">
@@ -36,13 +37,13 @@ export default function ArtistsDetails({ prevImage, nextImage, setIsShowingArtwo
         </Box>
 
         <Center>
-            <Box w="100%" mt="8" >
-                <HStack justifyContent="center" spacing="10">
-                    <a href="https://youtube.com" target="_blank"><Image className="icon" src="images/icons/personalwebsite.png" alt="Artist's Personal Website Logo"></Image></a>
-                    <a href="https://youtube.com" target="_blank"><Image className="icon" src="images/icons/artstation.png" alt="ArtStation Logo"></Image></a>
-                    <a href="https://youtube.com" target="_blank"><Image className="icon" src="images/icons/deviantart.png" alt="DeviantArt Logo"></Image></a>
-                    <a href="https://youtube.com" target="_blank"><Image className="icon" src="images/icons/twitter.png" alt="Twitter Logo"></Image></a>
-                    <a href="https://youtube.com" target="_blank"><Image className="icon" src="images/icons/youtube.png" alt="Youtube Logo"></Image></a>
+            <Box w="100%" mt="4" >
+                <HStack justifyContent="center" spacing="14">
+                    <IconLink siteName="Website" siteURL="https://youtube.com" logoSrc="images/icons/personalwebsite.png"/>
+                    <IconLink siteName="ArtStation" siteURL="https://youtube.com" logoSrc="images/icons/artstation.png"/>
+                    <IconLink siteName="DeviantArt" siteURL="https://youtube.com" logoSrc="images/icons/deviantart.png"/>
+                    <IconLink siteName="Twitter" siteURL="https://youtube.com" logoSrc="images/icons/twitter.png"/>
+                    <IconLink siteName="Youtube" siteURL="https://youtube.com" logoSrc="images/icons/youtube.png"/>
                 </HStack>
             </Box>
         </Center>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Box, Image, Center, Select, Text } from "@chakra-ui/react"
+import { Box, Center, Select, Text } from "@chakra-ui/react"
 import Header from '../components/Header'
 import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';
-import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '@chakra-ui/icons'
 import Methods from '../Methods';
 import '../styles.css'
 import ArtistsDetails from '../components/ArtistDetails';

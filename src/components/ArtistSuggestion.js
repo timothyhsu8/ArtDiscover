@@ -5,7 +5,7 @@ export default function ArtistSuggestion() {
     return(
         <Flex alignItems="center" justifyContent="center">
             <Flex w="600px" direction="column" bgColor="gray.200" p={12} rounded={6} fontSize={16}>
-                <Heading mb={6} textAlign="center" fontSize="40px"> Suggest An Artist </Heading>
+                <Heading mb={6} textAlign="center" fontSize="40px" fontWeight="hairline"> Suggest An Artist </Heading>
                 <Flex direction="row">
                     <Text fontWeight="medium"> Artist Name</Text>
                     <Text fontWeight="medium" color="red">*</Text> 

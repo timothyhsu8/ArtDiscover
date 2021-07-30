@@ -8,11 +8,12 @@
 
 .icon{
     width: 80px;
+    transition: 0.3s;
 }
 
 .icon:hover{
     cursor:pointer;
-    opacity:0.8;
+    opacity:0.7;
 }
 
 .iconContainer:hover{
@@ -28,16 +29,16 @@
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.3s ease;
-  }
+}
 
-  .active, .dot:hover {
+.active, .dot:hover {
     background-color: #717171;
-  }
+}
 
 /* FAVORITE BUTTONS */
 .favButton {
-    transition: transform .10s;
-    transition: color .10s;
+    transition: transform 2s;
+    transition: color 0.18s;
 }
 
 .favButton:hover{
@@ -58,4 +59,32 @@
 
 .gradientParent:hover .gradientBlock {
     opacity: 0.8;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1s;
+    animation-name: fade;
+    animation-duration: 1s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+
+/* Resource */
+.resource {
+    transition: 0.3s;
+}
+
+.resource:hover {
+    background-color: #cad6e6;
+    cursor:"pointer";
 }

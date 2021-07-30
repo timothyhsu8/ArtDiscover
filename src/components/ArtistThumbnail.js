@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Text, Center, Button, Box } from "@chakra-ui/react"
 import { StarIcon } from '@chakra-ui/icons'
-import '../styles/FavButton.css'
+import '../styles.css'
 
 export default function ArtistThumbnail( {artistData, showArtistDetails} ) {
 

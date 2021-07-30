@@ -38,7 +38,7 @@ export default function ArtistsDetails({ prevImage, nextImage, setImageNum, setI
         {/* SLIDESHOW */}
         <Center>
             <Box w="95%" h="70vh" pos="relative" bgColor="black" top="50%">
-                <Image pos="absolute" 
+                <Image className="fade" pos="absolute" 
                     src={currentArtistData.imageURL[imageNum]} 
                     w="100%"
                     h="100%"

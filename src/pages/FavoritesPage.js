@@ -38,7 +38,6 @@ export default function FavoritesPage() {
             currentArtistData={currentArtistData} imageNum={imageNum}  />
     }
 
-
     const renderFavArtists = () => {
         /* No Artists Favorited */
         if(localStorage.getItem("favArtists") === ""){

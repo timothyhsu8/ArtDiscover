@@ -68,6 +68,8 @@ export default function ArtistsDetails({ prevImage, nextImage, setImageNum, setI
             <Text fontSize="50" textColor="white" fontWeight="normal">
                 {currentArtistData.name}
             </Text>
+            {/* <Center><Image pos="absolute" w="90px" right="700px" top="715px"
+             borderRadius="50%" src="https://pbs.twimg.com/profile_images/1377451456584802306/otVumsPO_400x400.jpg"></Image></Center> */}
         </Box>
 
         <Center>

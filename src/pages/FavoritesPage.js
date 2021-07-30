@@ -4,14 +4,40 @@ import Header from '../components/Header'
 import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';
 import Methods from '../Methods';
+import ArtistsDetails from '../components/ArtistDetails';
 
 export default function FavoritesPage() {
     const [favType, setFavType] = useState("artists");
-    const [artists, setArtists] = useState(Methods.shuffle(artistData));
+    const [showingArtwork, setIsShowingArtwork] = useState(false);
+    const [artists, setArtists] = useState(artistData);
+    const [currentArtistData, setCurrentArtistData] = useState();
+    const [imageNum, setImageNum] = useState(0);
 
     const changeFavType = ( newFavType ) => {
         setFavType(newFavType);
     }
+
+    const nextImage = () => {
+        (imageNum === currentArtistData.imageURL.length-1) ? setImageNum(0) : setImageNum(imageNum+1);
+    }
+
+    const prevImage = () => {
+        (imageNum === 0) ? setImageNum(currentArtistData.imageURL.length-1) : setImageNum(imageNum-1);
+    }
+
+    const showArtistDetails = ( artistData ) => {
+        setCurrentArtistData(artistData);
+        setImageNum(0);
+        setIsShowingArtwork(true);
+    }
+
+    const renderArtistData = () => {
+        if(!showingArtwork) return;
+
+        return <ArtistsDetails prevImage={prevImage} nextImage={nextImage} setImageNum={setImageNum} setIsShowingArtwork={setIsShowingArtwork} 
+            currentArtistData={currentArtistData} imageNum={imageNum}  />
+    }
+
 
     const renderFavArtists = () => {
         /* No Artists Favorited */
@@ -25,13 +51,13 @@ export default function FavoritesPage() {
         }
         
         /* Render Favorite Artists */
-        else return <ArtistGrid artists={artists.filter(artist => localStorage.getItem("favArtists").includes(artist.name))} />;
+        else return <ArtistGrid artists={artists.filter(artist => localStorage.getItem("favArtists").includes(artist.name))} showArtistDetails={showArtistDetails}/>;
     }
 
     return (
         <Box>
+            {renderArtistData()}
             <Header headerColor="teal.400" currentPage="favorites" weight="thin"/>
-            
             {/* SORT BY OPTION */}
             <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
                 <Center>

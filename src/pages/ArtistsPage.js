@@ -61,7 +61,7 @@ export default function ArtistsPage() {
                             <Box bgColor="white" h="10" mt={3} mb={3}>
                                 <HStack spacing="2.5">
                                     <Text fontSize="18" fontWeight="hairline">Sort by: </Text>
-                                    <Select w={200} h={10} color="teal.800" onChange={(sort) => Methods.reloadImages(sort.target.value, artists, setArtists )}>
+                                    <Select w={200} h={10} color="teal.800" onChange={(sort) => Methods.reloadImages(sort.target.value, filteredArtists, setFilteredArtists )}>
                                         <option value="sort_random">Random</option>
                                         <option value="sort_abc">Alphabetical [A-Z]</option>
                                         <option value="sort_zyx">Reverse Alphabetical [Z-A]</option>
@@ -72,7 +72,7 @@ export default function ArtistsPage() {
                                 <HStack spacing="2.5">
                                     <Text fontSize="18" fontWeight="hairline">Search:</Text>
                                     <Input placeholder="Search Artist's Name" w="300px" 
-                                        onChange={(event) =>setFilteredArtists(artists.filter(artist => artist.name.toLowerCase().includes(event.target.value.toLowerCase())))}
+                                        onChange={(event) => setFilteredArtists(artists.filter(artist => artist.name.toLowerCase().includes(event.target.value.toLowerCase())))}
                                     />
                                 </HStack>
                             </Box>

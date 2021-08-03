@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useColorMode, Box, Grid, Center, Select, Button, Text, Flex, Image, HStack, VStack} from "@chakra-ui/react"
+import { Box, Grid, Center, Select, Button, Text, Flex, Image, HStack, VStack} from "@chakra-ui/react"
 import Header from '../components/Header'
 import { artistData } from '../artists';
 import ArtistGrid from '../components/ArtistGrid';

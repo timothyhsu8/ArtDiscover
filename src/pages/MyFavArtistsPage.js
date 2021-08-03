@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
-import { useColorMode, Flex, Box, Button, Text, Center, Image } from "@chakra-ui/react"
+import { Flex, Box, Button, Text, Center, Image } from "@chakra-ui/react"
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 
 export default function MyFavArtistsPage() {

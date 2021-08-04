@@ -30,6 +30,7 @@ export default function ArtResourcesPage() {
                     name="Ethan Becker"
                     pfp="https://yt3.ggpht.com/ytc/AKedOLRnGwXNGf2venRyua3GMD8zfymRCzxzoXd55bvYVw=s88-c-k-c0x00ffffff-no-rj"
                     description="Animator - Avatar, DOTA, Voltron, Invincible"
+                    description2="Teaches imperative techniques for breaking down and simplifying professional artwork while also keeping things entertaining."
                     vid1thumbnail="https://i.ytimg.com/vi/FqZhb5hRs5g/maxresdefault.jpg"
                     vid1title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
                     vid2thumbnail="https://i.ytimg.com/vi/emcO79uteN4/maxresdefault.jpg"

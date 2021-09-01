@@ -4,12 +4,15 @@ import { StarIcon } from '@chakra-ui/icons'
 import '../styles.css'
 
 export default function ArtistThumbnail( {artistData, showArtistDetails} ) {
-
-    const [isFavorited, setIsFavorited] = useState( localStorage.getItem("favArtists").includes(artistData.name) ? true : false);
+    // Checks if local storage is null. If not, check if current artist is favorited.
+    const [isFavorited, setIsFavorited] = useState(  localStorage.getItem("favArtists") !== null ? (localStorage.getItem("favArtists").includes(artistData.name)) ? true : false  : (false));
     const [showingArtwork, setIsShowingArtwork] = useState(false);
 
 
     const addToFavorites = () => {
+        if(localStorage.getItem("favArtists") === null)
+            localStorage.setItem("favArtists", []);
+
         let favArtists = localStorage.getItem("favArtists").toString().split(",");  // Get current faved artists and format it into an array
         
         // If user favorites the artist, add artist to the list. If user unfavorites an artist, remove artist from the list

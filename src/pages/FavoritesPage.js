@@ -40,7 +40,7 @@ export default function FavoritesPage() {
 
     const renderFavArtists = () => {
         /* No Artists Favorited */
-        if(localStorage.getItem("favArtists") === ""){
+        if(localStorage.getItem("favArtists") === null || localStorage.getItem("favArtists") === ""){
             return <Center>
                 <VStack spacing="7" textAlign="center">
                     <Text fontSize="26" fontWeight="hairline" mt={30}> You don't have any favorited artists yet </Text>

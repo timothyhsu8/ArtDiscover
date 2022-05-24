@@ -7,7 +7,7 @@ export default function Header( {headerColor, currentPage, weight} ) {
     
     return (
         <Box bgColor={headerColor} minW="100%" minH="50" borderRadius="3">
-            <Grid templateColumns="repeat(5, 1fr)" fontSize="28" textColor="white">
+            <Grid templateColumns="repeat(3, 1fr)" fontSize="28" textColor="white">
                 <Link to={'/artists'}>
                     <Button _hover={{
                         color:"gray.700",
@@ -42,7 +42,7 @@ export default function Header( {headerColor, currentPage, weight} ) {
                         PERSONAL FAVORITE ARTISTS 
                     </Button> 
                 </Link> */}
-                <Link to={'/suggestions'}>
+                {/* <Link to={'/suggestions'}>
                     <Button _hover={{
                         color:"gray.700",
                         bgColor:"orange.200"}}
@@ -57,7 +57,7 @@ export default function Header( {headerColor, currentPage, weight} ) {
                         minW="100%" minH="50" bgColor={(currentPage === "about") ? "blue.400" : headerColor} 
                         borderRadius="3" fontSize="30" fontWeight={weight} rightIcon={<QuestionIcon />}> ABOUT 
                     </Button> 
-                </Link>
+                </Link> */}
             </Grid>
             <Box bgColor="teal.200" minW="100%" minH="2" borderRadius="3" />
         </Box>

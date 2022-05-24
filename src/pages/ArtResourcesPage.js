@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
-import { Box, Grid, Text, Center, Select, useColorMode, Button, Avatar, VStack, Heading, Icon, Image } from "@chakra-ui/react"
+import { Box, Grid, Text, Center, Select, useColorMode, Button, Avatar, VStack, Heading, Icon, Image, Tag } from "@chakra-ui/react"
 import { artistData } from '../artists';
 import { resourceData } from '../artresources'
 import YoutubeResource from '../components/YoutubeResource'
@@ -10,12 +10,10 @@ import { BsGlobe2 } from "react-icons/bs";
 export default function ArtResourcesPage() {
     // const [artists, setArtists] = useState(shuffle(artistData));
     // const [artists, setArtists] = useState(artistData);
-    const [resoureces, setResources] = useState(resourceData)
+    const [resources, setResources] = useState(resourceData)
     const { toggleColorMode } = useColorMode()
 
-    console.log(resoureces)
-    const items = [1, 2, 3, 4, 5, 6, 7]
-    const imageUrl = 'images/resources/backgrounds/cubebrush.png'
+
     return (
         <Box>
             {/* <Button float="right" variant="ghost" onClick={toggleColorMode} _focus={{}}>CHANGE COLOR MODE</Button> */}
@@ -35,94 +33,36 @@ export default function ArtResourcesPage() {
 
             <Grid templateColumns="repeat(auto-fill, minmax(600px, 1fr))">
                 {
-                    resoureces.map((item) => {
+                    resources.map((item) => {
+                        let costInfo
+                        if (item.cost === "paid")
+                            costInfo = {"text": "Paid", "color": "blue"}
+                        if (item.cost === "free")
+                            costInfo = {"text": "Free", "color": "green"}
+                        if (item.cost === "mix")
+                            costInfo = {"text": "Mix", "color": "yellow"}
+
                         return (
-                            <a  href={item.url} target="_blank">
-                                <VStack borderRadius={5} m={5} h='400' spacing='0' _hover={{cursor:'pointer', opacity:'0.8', transition:'0.15s'}} transition='0.1s' boxShadow='md' bgColor='white' >
+                            <a href={item.url} target="_blank">
+                                <Box borderRadius={5} m={5} minH='350' spacing='0' _hover={{cursor:'pointer', opacity:'0.8', transition:'0.15s'}} transition='0.1s' boxShadow='md' bgColor='gray.100'>
                                     <Image src={item.image} w='full' h='200' fit='cover'/>
-                                    <Box w='full' h='full' >
-                                        <VStack padding={5}>
-                                            <Avatar src={item.avatar} size='lg' />
-                                            <Heading size='lg'> {item.name} </Heading>
-                                            <Text fontSize={20}>
-                                                {item.description}
-                                            </Text>
-                                        </VStack>
-                                    </Box>
-                                </VStack>
+                                    <VStack pos='relative'>
+                                        <Tag pos='absolute' size='md' colorScheme={costInfo.color} right='3' top='3' variant='solid'> {costInfo.text} </Tag>
+                                        <Box w='full' h='full' >
+                                            <VStack padding={5}>
+                                                <Avatar src={item.avatar} size='lg' />
+                                                <Heading size='md' textAlign='center'> { item.name } </Heading>
+                                                <Text fontSize={18} textAlign='center'>
+                                                    {item.description}
+                                                </Text>
+                                            </VStack>
+                                        </Box>
+                                    </VStack>
+                                </Box>
                             </a>
                         )
                     })
                 }
-
-
-                {/* <Box pos='relative' h='350' bgImage={`linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url('${imageUrl}')`}
-                 bgColor='gray.100' bgSize='cover' _hover={{cursor:'pointer', bgColor:'gray.200'}}>
-                    <Icon pos='absolute' color='gray.700' right='2' top='2' as={BsGlobe2} boxSize={6} />
-                    <VStack padding={5}>
-                        <Avatar src='images/resources/cubebrush.png' size='2xl' />
-                        <Heading> Cubebrush </Heading>
-                        <Text fontSize={20}>
-                            Shop for art resources by community members
-                        </Text>
-                    </VStack>
-                </Box> */}
-                {/* <YoutubeResource 
-                    name="Ethan Becker"
-                    pfp="https://yt3.ggpht.com/ytc/AKedOLRnGwXNGf2venRyua3GMD8zfymRCzxzoXd55bvYVw=s88-c-k-c0x00ffffff-no-rj"
-                    description="Animator - Avatar, DOTA, Voltron, Invincible"
-                    description2="Teaches imperative techniques for breaking down and simplifying professional artwork while also keeping things entertaining."
-                    vid1thumbnail="https://i.ytimg.com/vi/FqZhb5hRs5g/maxresdefault.jpg"
-                    vid1title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid2thumbnail="https://i.ytimg.com/vi/emcO79uteN4/maxresdefault.jpg"
-                    vid2title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid3thumbnail="https://i.ytimg.com/vi/uCwrYiU54ZM/maxresdefault.jpg"
-                    vid3title="SAD-ist: 3 secret tips for BEGINNER animators | ALWAYS ONLY DRAW TWO POSES [animator reviews SADIST]"
-                    /> */}
-                    {/* <YoutubeResource 
-                    name="Sinix Design"
-                    pfp="https://yt3.ggpht.com/ytc/AKedOLS57tKeriBs9tAB2SJhueYddg-ItkALmxdcRIXd=s176-c-k-c0x00ffffff-no-rj-mo"
-                    description="Animator - Avatar, DOTA, Voltron, Invincible"
-                    vid1thumbnail="https://i.ytimg.com/vi/FqZhb5hRs5g/maxresdefault.jpg"
-                    vid1title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid2thumbnail="https://i.ytimg.com/vi/emcO79uteN4/maxresdefault.jpg"
-                    vid2title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid3thumbnail="https://i.ytimg.com/vi/uCwrYiU54ZM/maxresdefault.jpg"
-                    vid3title="SAD-ist: 3 secret tips for BEGINNER animators | ALWAYS ONLY DRAW TWO POSES [animator reviews SADIST]"
-                    />
-                    <YoutubeResource 
-                    name="Ahmed Aldoori"
-                    pfp="https://yt3.ggpht.com/ytc/AKedOLQiqksKVvVWYx1usC3QCwA3boM4QaaDeeVJJZN-Y6o=s176-c-k-c0x00ffffff-no-rj-mo"
-                    description="Animator - Avatar, DOTA, Voltron, Invincible"
-                    vid1thumbnail="https://i.ytimg.com/vi/FqZhb5hRs5g/maxresdefault.jpg"
-                    vid1title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid2thumbnail="https://i.ytimg.com/vi/emcO79uteN4/maxresdefault.jpg"
-                    vid2title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid3thumbnail="https://i.ytimg.com/vi/uCwrYiU54ZM/maxresdefault.jpg"
-                    vid3title="SAD-ist: 3 secret tips for BEGINNER animators | ALWAYS ONLY DRAW TWO POSES [animator reviews SADIST]"
-                    />
-                    <YoutubeResource 
-                    name="Marc Brunet"
-                    pfp="https://yt3.ggpht.com/ytc/AKedOLTtyFs69uvMOWgMVWBNxlqmKuQvi6BAoSwu6IF9Sg=s176-c-k-c0x00ffffff-no-rj-mo"
-                    description="Animator - Avatar, DOTA, Voltron, Invincible"
-                    vid1thumbnail="https://i.ytimg.com/vi/FqZhb5hRs5g/maxresdefault.jpg"
-                    vid1title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid2thumbnail="https://i.ytimg.com/vi/emcO79uteN4/maxresdefault.jpg"
-                    vid2title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid3thumbnail="https://i.ytimg.com/vi/uCwrYiU54ZM/maxresdefault.jpg"
-                    vid3title="SAD-ist: 3 secret tips for BEGINNER animators | ALWAYS ONLY DRAW TWO POSES [animator reviews SADIST]"
-                    />
-                    <YoutubeResource 
-                    name="moderndayjames"
-                    pfp="https://yt3.ggpht.com/ytc/AKedOLQHADrbZ1bOCeKkq-ViQqxTSJaq39ueCqC8EBv4Xw=s176-c-k-c0x00ffffff-no-rj-mo"
-                    description="Animator - Avatar, DOTA, Voltron, Invincible"
-                    vid1thumbnail="https://i.ytimg.com/vi/FqZhb5hRs5g/maxresdefault.jpg"
-                    vid1title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid2thumbnail="https://i.ytimg.com/vi/emcO79uteN4/maxresdefault.jpg"
-                    vid2title="DIGITAL ART: the O̲N̲L̲Y̲ 2 MISTAKES YOU'RE MAKING | NEVER USE PRESSURE OPACITY! EVAR!!! 🦅"
-                    vid3thumbnail="https://i.ytimg.com/vi/uCwrYiU54ZM/maxresdefault.jpg"
-                    vid3title="SAD-ist: 3 secret tips for BEGINNER animators | ALWAYS ONLY DRAW TWO POSES [animator reviews SADIST]"
-                    />                     */}
             </Grid>
         </Box>
     )

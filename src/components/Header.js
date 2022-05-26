@@ -5,30 +5,32 @@ import { StarIcon, ViewIcon, QuestionIcon, PlusSquareIcon } from '@chakra-ui/ico
 
 export default function Header( {headerColor, currentPage, weight} ) {
     
+    const activeColor = 'blue.400';
+    const hoverColor = 'teal.300';
     return (
         <Box bgColor={headerColor} minW="100%" minH="50" borderRadius="3">
             <Grid templateColumns="repeat(3, 1fr)" fontSize="28" textColor="white">
                 <Link to={'/artists'}>
                     <Button _hover={{
                         color:"gray.700",
-                        bgColor:"orange.200"}} 
-                        minW="100%" minH="50" bgColor={(currentPage === "artists") ? "blue.400" : headerColor} 
+                        bgColor:hoverColor}} 
+                        minW="100%" minH="50" bgColor={(currentPage === "artists") ? activeColor : headerColor} 
                         borderRadius="3" fontSize="30" fontWeight={weight} rightIcon={<ViewIcon />}> ARTISTS 
                     </Button> 
                 </Link>
                 <Link to={'/artresources'}>
                     <Button _hover={{
                         color:"gray.700",
-                        bgColor:"orange.200"}}
-                        minW="100%" minH="50" bgColor={(currentPage === "artresources") ? "blue.400" : headerColor} 
+                        bgColor:hoverColor}}
+                        minW="100%" minH="50" bgColor={(currentPage === "artresources") ? activeColor : headerColor} 
                         borderRadius="3" fontSize="30" fontWeight={weight} rightIcon={<PlusSquareIcon />}> ART RESOURCES 
                     </Button> 
                 </Link>
                 <Link to={'/favorites'}>
                     <Button _hover={{
                         color:"gray.700",
-                        bgColor:"orange.200"}}
-                        minW="100%" minH="50" bgColor={(currentPage === "favorites") ? "blue.400" : headerColor} 
+                        bgColor:hoverColor}}
+                        minW="100%" minH="50" bgColor={(currentPage === "favorites") ? activeColor : headerColor} 
                         borderRadius="3" fontSize="30" fontWeight={weight} rightIcon={<StarIcon />}> 
                         FAVORITES
                     </Button> 

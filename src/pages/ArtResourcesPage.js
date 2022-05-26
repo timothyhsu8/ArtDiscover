@@ -21,14 +21,14 @@ export default function ArtResourcesPage() {
 
              {/* SORT BY OPTION */}
              <Box bgColor="white" h="10" w="100%" mt={3} mb={3}>
-                <Center>
+                {/* <Center>
                     <Text fontSize="18" fontWeight="hairline">Sort by: &nbsp;</Text>
                     <Select w={200} h={10} color="teal.800" onChange={(sort) => console.log("changed")}>
                         <option value="sort_random">Random</option>
                         <option value="sort_abc">Alphabetical [A-Z]</option>
                         <option value="sort_zyx">Reverse Alphabetical [Z-A]</option>
                     </Select>
-                </Center>
+                </Center> */}
             </Box>
 
             <Grid templateColumns="repeat(auto-fill, minmax(600px, 1fr))">
@@ -43,23 +43,23 @@ export default function ArtResourcesPage() {
                             costInfo = {"text": "Mix", "color": "yellow"}
 
                         return (
-                            <a href={item.url} target="_blank">
-                                <Box borderRadius={5} m={5} minH='350' spacing='0' _hover={{cursor:'pointer', opacity:'0.8', transition:'0.15s'}} transition='0.1s' boxShadow='md' bgColor='gray.100'>
-                                    <Image src={item.image} w='full' h='200' fit='cover'/>
-                                    <VStack pos='relative'>
-                                        <Tag pos='absolute' size='md' colorScheme={costInfo.color} right='3' top='3' variant='solid'> {costInfo.text} </Tag>
-                                        <Box w='full' h='full' >
-                                            <VStack padding={5}>
-                                                <Avatar src={item.avatar} size='lg' />
-                                                <Heading size='md' textAlign='center'> { item.name } </Heading>
-                                                <Text fontSize={18} textAlign='center'>
-                                                    {item.description}
-                                                </Text>
-                                            </VStack>
-                                        </Box>
-                                    </VStack>
-                                </Box>
-                            </a>
+                            <Box borderRadius={5} m={5} minH='350' spacing='0' _hover={{cursor:'pointer', opacity:'0.8', transition:'0.15s'}} transition='0.1s' boxShadow='md' bgColor='gray.100'>
+                                <a href={item.url} target="_blank">
+                                <Image src={item.image} w='full' h='200' fit='cover'/>
+                                <VStack pos='relative'>
+                                    <Tag pos='absolute' size='md' colorScheme={costInfo.color} right='3' top='3' variant='solid'> {costInfo.text} </Tag>
+                                    <Box w='full' h='full' >
+                                        <VStack spacing={1} padding={5}>
+                                            <Avatar src={item.avatar} size='lg' />
+                                            <Text fontSize={22} fontWeight="bold" textAlign='center'> { item.name } </Text>
+                                            <Text fontSize={18} textAlign='center'>
+                                                {item.description}
+                                            </Text>
+                                        </VStack>
+                                    </Box>
+                                </VStack>
+                                </a>
+                            </Box>
                         )
                     })
                 }

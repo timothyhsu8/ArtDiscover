@@ -66,7 +66,7 @@ export default function FavoritesPage() {
                         <option value="sort_abc">Alphabetical [A-Z]</option>
                         <option value="sort_zyx">Reverse Alphabetical [Z-A]</option>
                     </Select>
-                    <HStack spacing="10"> 
+                    {/* <HStack spacing="10"> 
                         <Box />
                         <Button w="120px" onClick={() => changeFavType("artists")}
                             bgColor={favType === "artists" ? "orange.200" : "gray.150"} 
@@ -82,7 +82,7 @@ export default function FavoritesPage() {
                             }}> 
                             Resources 
                         </Button>
-                    </HStack>
+                    </HStack> */}
                 </Center>
             </Box>
 

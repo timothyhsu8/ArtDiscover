@@ -35,11 +35,11 @@ export default function ArtResourcesPage() {
                 {
                     resources.map((item) => {
                         let costInfo
-                        if (item.cost === "paid")
+                        if (item.tags.includes("paid"))
                             costInfo = {"text": "Paid", "color": "blue"}
-                        if (item.cost === "free")
+                        if (item.tags.includes("free"))
                             costInfo = {"text": "Free", "color": "green"}
-                        if (item.cost === "mix")
+                        if (item.tags.includes("mix"))
                             costInfo = {"text": "Mix", "color": "yellow"}
 
                         return (
@@ -51,8 +51,8 @@ export default function ArtResourcesPage() {
                                     <Box w='full' h='full' >
                                         <VStack spacing={1} padding={5}>
                                             <Avatar src={item.avatar} size='lg' />
-                                            <Text fontSize={22} fontWeight="bold" textAlign='center'> { item.name } </Text>
-                                            <Text fontSize={18} textAlign='center'>
+                                            <Text fontSize={20} fontWeight="medium" textAlign='center'> { item.name } </Text>
+                                            <Text fontSize={16} textAlign='center'>
                                                 {item.description}
                                             </Text>
                                         </VStack>
